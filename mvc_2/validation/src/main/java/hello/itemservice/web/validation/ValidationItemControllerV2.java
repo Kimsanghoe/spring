@@ -261,13 +261,7 @@ public class ValidationItemControllerV2 {
     }
 
     @PostMapping("/{itemId}/edit")
-    public String edit(@PathVariable Long itemId, @Validated @ModelAttribute Item item, BindingResult bindingResult) {
-
-        if(bindingResult.hasErrors()){
-            return "validation/v2/editForm";
-        }
-
-
+    public String edit(@PathVariable Long itemId, Item item ) {
         itemRepository.update(itemId, item);
         return "redirect:/validation/v2/items/{itemId}";
     }
